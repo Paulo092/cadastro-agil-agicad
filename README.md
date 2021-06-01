@@ -12,5 +12,10 @@ O mercado se torna extremamente vasto considerando que o aplicativo pode atender
 ## 📝 Descrição
 Cotidianamente as pessoas se veem em situações em que é necessário o agendamento de um determinado serviço, porem essa tarefa pode ser complicada vide que deve-se considerar a disponibilidade tanto do cliente quanto de quem oferece o serviço. O AGICAD vem como um meio de facilitação do problema como um todo, gerenciando a disponibilidade de quem oferece o serviço e permitindo que o cliente escolha o horário que mais lhe é conveniente.
 
+## 👥 Membros do Grupo
+- Jhonata Kumaki Rodrigues
+- Paulo Sergio de Oliveira e Silva
+- Victor Emanuel de Lucca Araujo Vieira
+
 ## 🔗 Links Importantes
-[Diagrama do Modelo Conceitual](https://github.com/Paulo092/CadastroAgil-AGICAD/tree/main/ModeloConceitual)
+- [Diagrama do Modelo Conceitual](https://github.com/Paulo092/CadastroAgil-AGICAD/tree/main/ModeloConceitual)
