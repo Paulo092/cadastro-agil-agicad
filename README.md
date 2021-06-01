@@ -1,16 +1,14 @@
-# CadastroAgil-AGICAD
+# 📋 AGICAD (Cadastro Ágil)
 
-## Requisitos:
-### – Ter no mínimo 5 classes **.
-### – Possuir relações entre classes (tabelas): 1 para 1; 1 para muitos ou inverso; e, muitos para muitos;
-### – Possuir um texto descritivo da aplicação contendo:
-### – Nome/Título
+## 💡 Objetivo
+AGICAD tem como principal objetivo criar uma ponte segura entre empresas e pessoas que necessitam de um serviço, oferecendo um alto nível de gerenciamento para ambas as partes, com o foco em facilitar o agendamento de serviços.
 
-teste
+## 🎯 Público-alvo
+O AGICAD tem como público-alvo qualquer um que necessite usufruir de um serviço no qual é necessário agendamento prévio ou para quem deseja oferecer esse tipo de serviço, como por exemplo consultórios médicos, borracharias ou manicures. 
 
-### – Objetivo
-### – Público-alvo
-### – Mercado
-### – Descrição em texto corrido dos principais fundamentos (regras de negócio da aplicação).
-### – Diagrama de classes com os atributos, métodos (opcional) e as respectivas relações entres as classes (herança, composição, agregação, relação e outros...)
-### – Diagrama de Entidade-Relacionamento (opcional).
+## 💵 Mercado
+
+## 📝 Descrição
+Cotidianamente as pessoas ..., porem a tarefa de realizar um agendamento pode ser complicada vide que deve-se considerar a disponibilidade tanto do cliente quanto de quem oferece o serviço. Com o AGICAD esse processo é facilitado, gerenciando a disponibilidade de quem oferece o serviço e permitindo que o cliente escolha o horario que mais lhe é mais conveniente.
+
+## 🔗 Links Importantes
