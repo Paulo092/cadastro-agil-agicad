@@ -1,7 +1,8 @@
-# 📋 AGICAD (Cadastro Ágil)
+#       📋 AGICAD (Cadastro Ágil)
 
 ## 💡 Objetivo
 O principal objetivo é criar uma ponte segura entre pessoas que oferecem um serviço e pessoas que necessitam deste serviço, oferecendo um alto nível de gerenciamento para ambas as partes, com o foco principal em facilitar e agilizar os seus agendamentos.
+Agilisar
 
 ## 🎯 Público-alvo
 O AGICAD tem como público-alvo qualquer um que necessite usufruir de um serviço no qual é necessário agendamento prévio ou para quem deseja oferecer esse tipo de serviço, como por exemplo consultórios médicos, borracharias ou manicures. 
