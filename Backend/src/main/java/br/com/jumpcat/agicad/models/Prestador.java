@@ -1,17 +1,20 @@
 package br.com.jumpcat.agicad.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +23,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "PRESTADORES")
@@ -30,23 +34,16 @@ public class Prestador implements Serializable {
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codigo_pres", nullable = false)
+	@Column(name = "codigo_prestador", nullable = false)
 	private Integer codigo;
 	
-	@Column(name = "endereco_pres", nullable = false)
+	@Column(name = "endereco_prestador", nullable = false)
 	private String endereco;
 	
-	@OneToMany(mappedBy = "prestador")
-	private List<Servico> servicos = new ArrayList<>();
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "usuario_codigo", referencedColumnName = "codigo_usuario")
+    private Usuario usuario;
 	
 	@OneToMany(mappedBy = "prestador")
-	private List<Agendamentos> agendamentos = new ArrayList<>();
-
-	public Prestador(Integer codigo, String endereco) {
-		super();
-		this.codigo = codigo;
-		this.endereco = endereco;
-	}
-	
-	
+	private List<ServicoPrestado> servicosPrestados;
 }

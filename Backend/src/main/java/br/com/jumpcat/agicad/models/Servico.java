@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -33,16 +33,11 @@ public class Servico implements Serializable {
 	@Column(name = "codigo_servico", nullable = false)
 	private Integer codigo;
 	
+	@Size(max = 45)
 	@Column(name = "nome_servico", nullable = false)
 	private String nome;
 	
-	@Column(name = "preco_servico", nullable = false)
-	private Double preco;
-	
+	@Size(max = 255)
 	@Column(name = "descricao_servico")
 	private String descricao;
-	
-	@ManyToOne
-	private Prestador prestador;
-	
 }

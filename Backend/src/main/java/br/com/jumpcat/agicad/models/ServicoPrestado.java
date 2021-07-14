@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -16,30 +17,31 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "AGENDAMENTOS")
-public class Agendamentos implements Serializable {
-	
+@Table(name = "SERVICOS_PRESTADOS")
+public class ServicoPrestado implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@EqualsAndHashCode.Include
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto Incremento
-	@Column(name = "codigo_agendamento", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo_servico_prestado", nullable = false)
 	private Integer codigo;
 	
-	@Column(name = "horario_agendamento", nullable = false)
-	private String agendamento;
-	
-	@Column(name = "observacoes_agendamento")
-	private String observacoes;
-	
+	@Column(name = "preco_servico_prestado", nullable = false)
+	private Double preco;
+
 	@ManyToOne
+	@JoinColumn(name="codigo_prestador", nullable = false)
 	private Prestador prestador;
 	
+	@ManyToOne
+	@JoinColumn(name="codigo_servico", nullable = false)
+	private Servico servico;
 }
