@@ -3,6 +3,8 @@ package br.com.jumpcat.agicad.controllers;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -69,7 +71,7 @@ public class ServicoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@Operation(summary = "Insere um novo servico")
-	public ResponseEntity<ServicoDTO> insert(@RequestBody ServicoDTO objBody) {
+	public ResponseEntity<ServicoDTO> insert(@RequestBody @Valid ServicoDTO objBody) {
 		ServicoDTO objDTO = service.save(objBody);
 		
 		objDTO.add(linkTo(methodOn(ServicoController.class).fetchOne(objDTO.getCodigo())).withSelfRel());
@@ -78,7 +80,7 @@ public class ServicoController {
 
 	@PutMapping
 	@Operation(summary = "Atualiza um servico por id")
-	public ResponseEntity<ServicoDTO> update(@RequestBody ServicoDTO objBody) {
+	public ResponseEntity<ServicoDTO> update(@RequestBody @Valid ServicoDTO objBody) {
 		
 		ServicoDTO objDTO = service.update(objBody);
 		objDTO.add(linkTo(methodOn(ServicoController.class).fetchOne(objDTO.getCodigo())).withSelfRel());
