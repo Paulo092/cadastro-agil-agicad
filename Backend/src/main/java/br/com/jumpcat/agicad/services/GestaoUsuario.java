@@ -1,14 +1,18 @@
 package br.com.jumpcat.agicad.services;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jumpcat.agicad.dtos.UsuarioDTO;
+import br.com.jumpcat.agicad.exceptions.BusinessException;
+import br.com.jumpcat.agicad.models.Prestador;
 import br.com.jumpcat.agicad.models.Usuario;
+import br.com.jumpcat.agicad.repositories.PrestadorDAO;
 import br.com.jumpcat.agicad.repositories.UsuarioDAO;
-import br.com.jumpcat.agicad.services.exceptions.BusinessException;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -16,7 +20,7 @@ import lombok.AllArgsConstructor;
 public class GestaoUsuario {
 	
 	private UsuarioDAO dao;
-//	private PropietarioDAO propDAO;
+	private PrestadorDAO prestDao;
 	
 	@Transactional(readOnly = true)
 	public Page<UsuarioDTO> findAll(Pageable pageable) {	
@@ -35,7 +39,7 @@ public class GestaoUsuario {
 	
 	@Transactional(readOnly = true)
 	public UsuarioDTO findByLogin(String login) {
-		Usuario result = dao.findByEmail(login).
+		Usuario result = dao.findByLogin(login).
 				orElseThrow(() -> new BusinessException("Nenhum registro encontrado"));
 		
 		return new UsuarioDTO(result);
@@ -48,6 +52,14 @@ public class GestaoUsuario {
 		
 		return new UsuarioDTO(result);
 	}
+	
+	@Transactional(readOnly = true)
+	public UsuarioDTO findByNome(String nome) {
+		Usuario result = dao.findByNome(nome).
+				orElseThrow(() -> new BusinessException("Nenhum registro encontrado"));
+		
+		return new UsuarioDTO(result);
+    }
 	
 	@Transactional
 	public UsuarioDTO update(UsuarioDTO obj) {
@@ -85,6 +97,11 @@ public class GestaoUsuario {
 	
 	@Transactional
 	public void deleteById(Integer id) {
+		Usuario search = dao.findById(id).orElse(null);
+
+		Optional<Prestador> prestSyncId = prestDao.findByUsuario(search);
+		prestSyncId.stream().forEach(obj -> prestDao.deleteById(obj.getCodigo()));
+		
 		dao.deleteById(id);
 	}
 	

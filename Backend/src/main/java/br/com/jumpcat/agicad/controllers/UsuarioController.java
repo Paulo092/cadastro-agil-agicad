@@ -66,7 +66,31 @@ public class UsuarioController {
 			UsuarioDTO objDTO = service.findById(id);
 			objDTO.add(linkTo(methodOn(UsuarioController.class).fetchOne(id)).withSelfRel());
 			return ResponseEntity.ok(objDTO);
-		}	
+	}
+	
+	@GetMapping("/login/{login}")
+	@Operation(summary = "Busca um usuario pelo login")
+	public ResponseEntity<UsuarioDTO> findByLogin(@PathVariable String login) {
+		UsuarioDTO objDTO = service.findByLogin(login);
+		objDTO.add(linkTo(methodOn(UsuarioController.class).findByLogin(login)).withSelfRel());
+		return ResponseEntity.ok(objDTO);
+	}	
+	
+	@GetMapping("/email/{email}")
+	@Operation(summary = "Busca um usuario pelo email")
+	public ResponseEntity<UsuarioDTO> findByEmail(@PathVariable String email) {
+		UsuarioDTO objDTO = service.findByEmail(email);
+		objDTO.add(linkTo(methodOn(UsuarioController.class).findByEmail(email)).withSelfRel());
+		return ResponseEntity.ok(objDTO);
+	}
+	
+	@GetMapping("/nome/{nome}")
+	@Operation(summary = "Busca um usuario pelo nome")
+	public ResponseEntity<UsuarioDTO> findByNome(@PathVariable String nome) {
+		UsuarioDTO objDTO = service.findByNome(nome);
+		objDTO.add(linkTo(methodOn(UsuarioController.class).findByNome(nome)).withSelfRel());
+		return ResponseEntity.ok(objDTO);
+	}	
 	  
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -98,8 +122,4 @@ public class UsuarioController {
 		return ResponseEntity.noContent().build();
 
 	}
-
-
-	
-	
 }

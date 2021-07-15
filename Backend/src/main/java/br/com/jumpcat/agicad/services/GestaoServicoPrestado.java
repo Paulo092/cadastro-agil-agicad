@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jumpcat.agicad.dtos.ServicoPrestadoDTO;
+import br.com.jumpcat.agicad.exceptions.BusinessException;
 import br.com.jumpcat.agicad.models.Prestador;
 import br.com.jumpcat.agicad.models.Servico;
 import br.com.jumpcat.agicad.models.ServicoPrestado;
 import br.com.jumpcat.agicad.repositories.PrestadorDAO;
 import br.com.jumpcat.agicad.repositories.ServicoDAO;
 import br.com.jumpcat.agicad.repositories.ServicoPrestadoDAO;
-import br.com.jumpcat.agicad.services.exceptions.BusinessException;
 import lombok.AllArgsConstructor;
 
 @Service

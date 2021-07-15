@@ -73,9 +73,6 @@ public class PrestadorController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@Operation(summary = "Insere um novo prestador")
 	public ResponseEntity<PrestadorDTO> insert(@RequestBody @Valid PrestadorDTO objBody) {
-		
-		
-		
 		PrestadorDTO objDTO = service.save(objBody);
 		
 		objDTO.add(linkTo(methodOn(ServicoController.class).fetchOne(objDTO.getCodigo())).withSelfRel());

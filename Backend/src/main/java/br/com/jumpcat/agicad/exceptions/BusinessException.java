@@ -1,4 +1,4 @@
-package br.com.jumpcat.agicad.services.exceptions;
+package br.com.jumpcat.agicad.exceptions;
 
 public class BusinessException extends RuntimeException {
 
