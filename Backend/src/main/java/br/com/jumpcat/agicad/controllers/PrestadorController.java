@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/v1/agicad/prestadores")
+@RequestMapping("/v1/agicad/prestadores") //DeLucca Esteve aqui
 @Tag(name = "Endpoint de Prestador")
 public class PrestadorController {
 
