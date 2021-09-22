@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import br.com.jumpcat.agicad.exceptions.BusinessException;
+import br.com.jumpcat.agicad.services.exceptions.BusinessException;
+import br.com.jumpcat.agicad.services.exceptions.InvalidAuthenticationException;
 
 @ControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
@@ -55,15 +56,15 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 //	@ExceptionHandler(BusinessException.class)
 	@org.springframework.web.bind.annotation.ExceptionHandler(BusinessException.class)
 	public ResponseEntity<StandardError> dataIntegrity(BusinessException ex) {
-		StandardError erro = new StandardError(
-				HttpStatus.BAD_REQUEST.value(), 
-				LocalDateTime.now(), 
-				ex.getMessage(),
-				null);
-		
-		return ResponseEntity
-				.status(HttpStatus.BAD_REQUEST)
-				.body(erro);
+		StandardError erro = new StandardError(HttpStatus.BAD_REQUEST.value(), LocalDateTime.now(), ex.getMessage(), null);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
 	}
 	
+	@org.springframework.web.bind.annotation.ExceptionHandler(InvalidAuthenticationException.class)
+	public ResponseEntity<StandardError> invalidAuthenticationException (InvalidAuthenticationException ex){
+		StandardError erro = new StandardError(HttpStatus.BAD_REQUEST.value(),
+				LocalDateTime.now(), ex.getMessage(), null);
+		
+		return new ResponseEntity<>(erro, HttpStatus.BAD_REQUEST);
+	}
 }

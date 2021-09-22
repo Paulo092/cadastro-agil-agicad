@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jumpcat.agicad.dtos.ServicoPrestadoDTO;
-import br.com.jumpcat.agicad.exceptions.BusinessException;
 import br.com.jumpcat.agicad.models.Prestador;
 import br.com.jumpcat.agicad.models.Servico;
 import br.com.jumpcat.agicad.models.ServicoPrestado;
 import br.com.jumpcat.agicad.repositories.PrestadorDAO;
 import br.com.jumpcat.agicad.repositories.ServicoDAO;
 import br.com.jumpcat.agicad.repositories.ServicoPrestadoDAO;
+import br.com.jumpcat.agicad.services.exceptions.BusinessException;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -61,9 +61,20 @@ public class GestaoServicoPrestado{
 	}
 	
 //	@Transactional
-//	public void deleteById(Integer id) {
-//		dao.deleteById(id);
-//	}
+//	public ServicoPrestadoDTO update(ServicoDTO obj) {
+//		ServicoPrestado entity = dao.findById(obj.getCodigo())
+//				.orElseThrow(() -> new BusinessException("Nenhum registro encontrado"));
+//	
+//		entity.setDescricao(obj.getDescricao());
+//		entity.setNome(obj.getNome());
+//		
+//		return new ServicoDTO(dao.save(entity));
+//	}	
+	
+	@Transactional
+	public void deleteById(Integer id) {
+		dao.deleteById(id);
+	}
 	
 	public boolean existById(Integer id) {
 		return dao.existsById(id);

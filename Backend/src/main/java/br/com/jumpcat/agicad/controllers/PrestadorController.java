@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/v1/agicad/prestadores") //DeLucca Esteve aqui
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/v1/agicad/prestadores")
 @Tag(name = "Endpoint de Prestador")
 public class PrestadorController {
 
@@ -74,7 +76,6 @@ public class PrestadorController {
 	@Operation(summary = "Insere um novo prestador")
 	public ResponseEntity<PrestadorDTO> insert(@RequestBody @Valid PrestadorDTO objBody) {
 		PrestadorDTO objDTO = service.save(objBody);
-		
 		objDTO.add(linkTo(methodOn(ServicoController.class).fetchOne(objDTO.getCodigo())).withSelfRel());
 		return ResponseEntity.ok(objDTO);
 	}
